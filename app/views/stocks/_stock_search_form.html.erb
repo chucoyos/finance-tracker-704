@@ -1,0 +1,17 @@
+<div class="input-group flex-nowrap">
+    <%= form_tag search_stock_path, class: 'input-group flex-nowrap', method: :get do %>
+      <div class="col-8">
+        <%= text_field_tag :stock, 
+          params[:stock],
+          placeholder: "Stock ticker symbol", 
+          autofocus: true, 
+          class: "form-control"
+        %>
+      </div>
+      <div class="col-4">
+        <%= button_tag type: :submit, class: 'input-group-text' do %>
+          <i class="bi bi-search"></i>
+        <% end %>
+      </div>
+    <% end %>
+</div>
