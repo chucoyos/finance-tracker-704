@@ -1,18 +1,9 @@
-<div class="card" style="width: 18rem;">
   <% if @stock %>
-    <div class="card-header">
-      Stock
+    <div class='row mx-auto mt-3'>
+      <div class="card card-header d-block col-8">
+        <strong>Stock: </strong> <%= @stock.name %>
+        <strong>Ticker: </strong> <%= @stock.ticker %>
+        <strong>Price: </strong> <%= @stock.last_price %>
+      </div>
     </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">
-        <p>Stock: <%= @stock.name %></p>
-      </li>
-      <li class="list-group-item">
-      <p>Ticker: <%= @stock.ticker %></p>
-      </li>
-      <li class="list-group-item">
-      <p>Last Price: <%= @stock.last_price %></p>
-      </li>
-    </ul>
   <% end %>
-</div>
