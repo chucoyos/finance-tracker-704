@@ -1,0 +1,27 @@
+<% if current_user.stocks.any? %>
+  <div class='row'>
+    <div class='col-8'>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Ticker</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @tracked_stocks.each do |stock| %>
+            <tr>
+              <th scope="row"><%= stock.ticker %></th>
+              <th scope="row"><%= stock.name %></th>
+              <th scope="row"><%= stock.last_price %></th>
+              <th scope="row"><%= 'Action placeholder' %></th>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<% end %>
+`
