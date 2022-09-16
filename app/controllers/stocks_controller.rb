@@ -14,4 +14,16 @@ class StocksController < ApplicationController
       redirect_to my_portfolio_path
     end
   end
+
+  def create
+    @stock = Stock(params[:ticker])
+    if @stock.save
+      current_user.stocks << @stock
+      flash[:notice] = "#{@stock.name} was successfully added to your portfolio"
+      redirect_to my_stocks_path
+    else
+      flash[:alert] = "Something went wrong with the stock search process"
+      redirect_to my_stocks_path
+    end
+  end
 end

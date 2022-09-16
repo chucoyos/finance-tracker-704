@@ -1,9 +1,34 @@
-  <% if @stock %>
-    <div class='row mx-auto mt-3'>
-      <div class="card card-header d-block col-8">
-        <strong>Stock: </strong> <%= @stock.name %>
-        <strong>Ticker: </strong> <%= @stock.ticker %>
-        <strong>Price: </strong> <%= @stock.last_price %>
+<% if @stock %>
+  <div class="input-group flex-nowrap">
+    <div class="card card-header d-block col-8">
+      <strong>Stock: </strong> <%= @stock.name %>
+      <strong>Ticker: </strong> <%= @stock.ticker %>
+      <strong>Price: </strong> <%= @stock.last_price %>
+    </div>
+    <div class="input-group flex-nowrap">
+      <div class="col-4">
+        <% if current_user.can_track_stock?(@stock.ticker) %>
+          <%= link_to "save",
+            user_stocks_path(user: current_user, ticker: @stock.ticker),
+            method: :post,
+            class: "btn btn-primary"
+          %>
+        <% else %>
+          <button type="button" class="btn btn-primary position-relative">
+            Inbox
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              You are already tracking
+              <% if !current_user.under_stock_limit? %>
+                10 stocks limit reached
+              <% end %>
+              <span class="visually-hidden">unread messages</span>
+              <% if current_user.stock_already_tracked?(@stock.ticker) %>
+                this stock
+              <% end %>
+            </span>
+          </button>
+        <% end %>
       </div>
     </div>
-  <% end %>
+  </div>
+<% end %>
