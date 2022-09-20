@@ -24,8 +24,8 @@
               <th scope="row"><%= friend.first_name %></th>
               <th scope="row"><%= friend.last_name %></th>
               <th scope="row">
-                <%= link_to "Remove", 
-                  "#", 
+                <%= link_to "Discard", 
+                  friendship_path(friend),
                   data: { confirm: "Are you sure?" },
                   class: "btn btn-warning"
                 %>
