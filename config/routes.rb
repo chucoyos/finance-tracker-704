@@ -10,5 +10,5 @@ Rails.application.routes.draw do
   get "new_stock", to: "stocks#new"
   get "my_friends", to: "users#my_friends"
   resources :user_stocks
-  resources :friendship
+  resources :friendship, only: [:show]
 end
